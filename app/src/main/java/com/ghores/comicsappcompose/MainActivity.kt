@@ -7,7 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -17,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ghores.comicsappcompose.ui.theme.ComicsAppComposeTheme
+import com.ghores.comicsappcompose.view.CharactersBottomNav
 import com.ghores.comicsappcompose.view.CollectionScreen
 import com.ghores.comicsappcompose.view.LibraryScreen
 
@@ -54,7 +54,7 @@ fun CharactersScaffold(navController: NavHostController) {
     Scaffold(
         scaffoldState = scaffoldState,
         bottomBar = {
-
+            CharactersBottomNav(navController = navController)
         }
     ) { paddingValues ->
         NavHost(
