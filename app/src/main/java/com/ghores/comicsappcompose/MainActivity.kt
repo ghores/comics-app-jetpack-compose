@@ -19,6 +19,7 @@ import com.ghores.comicsappcompose.ui.theme.ComicsAppComposeTheme
 import com.ghores.comicsappcompose.view.CharactersBottomNav
 import com.ghores.comicsappcompose.view.CollectionScreen
 import com.ghores.comicsappcompose.view.LibraryScreen
+import dagger.hilt.android.AndroidEntryPoint
 
 sealed class Destination(val route: String) {
     object Library : Destination("library")
@@ -27,7 +28,7 @@ sealed class Destination(val route: String) {
         fun createRoute(characterId: Int?) = "character/$characterId"
     }
 }
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
