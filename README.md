@@ -19,7 +19,7 @@ the technologies used in this project consist of:
 
 8.Navigation
 
-##Description
+## Description
 
 When learning to build an Android application, you start by learning the basics and then move to learn the libraries used in Android development. But you rarely learn the correct way to use these libraries together, to make a consistent, well designed and well developed application. This is where this course comes in.
 
