@@ -4,6 +4,9 @@ plugins {
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
 }
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
     namespace 'com.ghores.comicsappcompose'
@@ -20,6 +23,8 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+        buildConfigField("String", "MARVEL_KEY", apikeyProperties['MARVEL_KEY'])
+        buildConfigField("String", "MARVEL_SECRET", apikeyProperties['MARVEL_SECRET'])
     }
 
     buildTypes {
