@@ -12,4 +12,4 @@ val Pink40 = Color(0xFF7D5260)
 
 val GrayTransparentBackground = Color(0x55DDE4FF)
 val GrayBackground = Color(0xFFD5E4FF)
-val GrayBackground1 = Color(0xFFd8e2dc)
+val GrayBackgroundLight = Color(0xFFd8e2dc)

@@ -5,22 +5,20 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.ghores.comicsappcompose.Destination
 import com.ghores.comicsappcompose.R
-import com.ghores.comicsappcompose.ui.theme.GrayBackground1
-import com.ghores.comicsappcompose.ui.theme.Purple40
+import com.ghores.comicsappcompose.ui.theme.GrayBackgroundLight
 
 @Composable
 fun CharactersBottomNav(
     navController: NavHostController
 ) {
     BottomNavigation(elevation = 5.dp,
-    backgroundColor = GrayBackground1) {
+    backgroundColor = GrayBackgroundLight) {
         val navBackStackEntry = navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry.value?.destination
 

@@ -70,7 +70,7 @@ fun ComicsAppComposeTheme(
     )
     val sys = rememberSystemUiController()
     SideEffect {
-        sys.setStatusBarColor(GrayBackground1)
+        sys.setStatusBarColor(GrayBackgroundLight)
 
     }
 }
