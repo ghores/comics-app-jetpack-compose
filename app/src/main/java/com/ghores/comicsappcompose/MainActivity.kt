@@ -47,7 +47,6 @@ class MainActivity : ComponentActivity() {
 }
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CharactersScaffold(navController: NavHostController) {
     val scaffoldState = rememberScaffoldState()
