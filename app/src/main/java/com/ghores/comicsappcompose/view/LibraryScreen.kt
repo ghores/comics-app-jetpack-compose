@@ -38,6 +38,7 @@ import com.ghores.comicsappcompose.CharacterImage
 import com.ghores.comicsappcompose.Destination
 import com.ghores.comicsappcompose.model.CharactersApiResponse
 import com.ghores.comicsappcompose.model.api.NetworkResult
+import com.ghores.comicsappcompose.model.connectivity.ConnectivityObservable
 import com.ghores.comicsappcompose.viewmodel.LibraryApiViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,6 +50,8 @@ fun LibraryScreen(
 ) {
     val result by vm.result.collectAsState()
     val text = vm.queryText.collectAsState()
+    val networkAvailable =
+        vm.networkAvailable.observe().collectAsState(ConnectivityObservable.Status.Available)
 
     Column(
         modifier = Modifier
@@ -56,6 +59,22 @@ fun LibraryScreen(
             .padding(bottom = paddingValues.calculateBottomPadding()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+        if (networkAvailable.value == ConnectivityObservable.Status.Unavailable) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.Red),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "Network unavailable",
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+        }
 
         OutlinedTextField(
             value = text.value,

@@ -3,8 +3,13 @@ package com.ghores.comicsappcompose.di
 import android.content.Context
 import androidx.room.Room
 import com.ghores.comicsappcompose.model.api.ApiService
+import com.ghores.comicsappcompose.model.connectivity.ConnectivityMonitor
+import com.ghores.comicsappcompose.model.db.CharacterDao
 import com.ghores.comicsappcompose.model.db.CollectionDb
+import com.ghores.comicsappcompose.model.db.CollectionDbRepoImpl
 import com.ghores.comicsappcompose.model.db.Constants.DB
+import com.ghores.comicsappcompose.model.db.NoteDao
+import com.ghores.comicsappcompose.repository.CollectionDbRepo
 import com.ghores.comicsappcompose.repository.MarvelApiRepository
 import dagger.Module
 import dagger.Provides
@@ -25,7 +30,7 @@ object HiltModule {
     @Provides
     fun provideCharacterDao(collectionDb: CollectionDb) = collectionDb.characterDao()
 
-   /* @Provides
+    @Provides
     fun provideNoteDao(collectionDb: CollectionDb) = collectionDb.noteDao()
 
     @Provides
@@ -34,5 +39,5 @@ object HiltModule {
 
     @Provides
     fun provideConnectivityManager(@ApplicationContext context: Context) =
-        ConnectivityMonitor.getInstance(context)*/
+        ConnectivityMonitor.getInstance(context)
 }

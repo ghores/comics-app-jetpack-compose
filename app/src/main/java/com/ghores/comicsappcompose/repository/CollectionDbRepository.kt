@@ -2,6 +2,7 @@ package com.ghores.comicsappcompose.repository
 
 
 import com.ghores.comicsappcompose.model.db.DbCharacter
+import com.ghores.comicsappcompose.model.db.DbNote
 import kotlinx.coroutines.flow.Flow
 
 interface CollectionDbRepo {
@@ -16,7 +17,7 @@ interface CollectionDbRepo {
     suspend fun deleteCharacterFromRepo(character: DbCharacter)
 
 
-   /* suspend fun getAllNotes(): Flow<List<DbNote>>
+    suspend fun getAllNotes(): Flow<List<DbNote>>
 
     suspend fun getNotesFromRepo(characterId: Int): Flow<List<DbNote>>
 
@@ -26,5 +27,5 @@ interface CollectionDbRepo {
 
     suspend fun deleteNoteFromRepo(note: DbNote)
 
-    suspend fun deleteAllNotes(character: DbCharacter)*/
+    suspend fun deleteAllNotes(character: DbCharacter)
 }

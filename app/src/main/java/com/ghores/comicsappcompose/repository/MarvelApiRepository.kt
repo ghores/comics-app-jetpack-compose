@@ -1,5 +1,7 @@
 package com.ghores.comicsappcompose.repository
 
+import androidx.compose.runtime.mutableStateOf
+import com.ghores.comicsappcompose.model.CharacterResult
 import com.ghores.comicsappcompose.model.CharactersApiResponse
 import com.ghores.comicsappcompose.model.api.MarvelApi
 import com.ghores.comicsappcompose.model.api.NetworkResult
@@ -10,7 +12,7 @@ import retrofit2.Response
 
 class MarvelApiRepository(private val api: MarvelApi) {
     val characters = MutableStateFlow<NetworkResult<CharactersApiResponse>>(NetworkResult.Initial())
-
+    val characterDetails = mutableStateOf<CharacterResult?>(null)
     fun query(query: String) {
         characters.value = NetworkResult.Loading()
         api.getCharacters(query)
@@ -35,5 +37,14 @@ class MarvelApiRepository(private val api: MarvelApi) {
                 }
 
             })
+    }
+
+    fun getSingleCharacter(id: Int?) {
+        id?.let {
+            characterDetails.value =
+                characters.value.data?.data?.results?.firstOrNull() { character ->
+                    character.id == id
+                }
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.ghores.comicsappcompose.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ghores.comicsappcompose.model.connectivity.ConnectivityMonitor
 import com.ghores.comicsappcompose.repository.MarvelApiRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -16,11 +17,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LibraryApiViewModel @Inject constructor(
-    private val repository: MarvelApiRepository
+    private val repository: MarvelApiRepository,
+    connectivityMonitor: ConnectivityMonitor
 ) : ViewModel() {
     val result = repository.characters
     val queryText = MutableStateFlow("")
     private val queryInput = Channel<String>(Channel.CONFLATED)
+    val characterDetails = repository.characterDetails
+    val networkAvailable = connectivityMonitor
 
     init {
         retrieveCharacters()
@@ -43,5 +47,9 @@ class LibraryApiViewModel @Inject constructor(
     fun onQueryUpdate(input: String) {
         queryText.value = input
         queryInput.trySend(input)
+    }
+
+    fun retrieveSingleCharacter(id: Int) {
+        repository.getSingleCharacter(id)
     }
 }
