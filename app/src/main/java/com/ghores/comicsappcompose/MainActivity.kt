@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
@@ -19,6 +20,7 @@ import com.ghores.comicsappcompose.ui.theme.ComicsAppComposeTheme
 import com.ghores.comicsappcompose.view.CharactersBottomNav
 import com.ghores.comicsappcompose.view.CollectionScreen
 import com.ghores.comicsappcompose.view.LibraryScreen
+import com.ghores.comicsappcompose.viewmodel.LibraryApiViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 sealed class Destination(val route: String) {
@@ -28,8 +30,11 @@ sealed class Destination(val route: String) {
         fun createRoute(characterId: Int?) = "character/$characterId"
     }
 }
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    private val lvm by viewModels<LibraryApiViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -40,7 +45,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-                    CharactersScaffold(navController = navController)
+                    CharactersScaffold(navController = navController, lvm)
                 }
             }
         }
@@ -49,7 +54,7 @@ class MainActivity : ComponentActivity() {
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun CharactersScaffold(navController: NavHostController) {
+fun CharactersScaffold(navController: NavHostController, lvm: LibraryApiViewModel) {
     val scaffoldState = rememberScaffoldState()
 
     Scaffold(
@@ -63,12 +68,16 @@ fun CharactersScaffold(navController: NavHostController) {
             startDestination = Destination.Library.route
         ) {
             composable(Destination.Library.route) {
-                LibraryScreen()
+                LibraryScreen(
+                    navController = navController,
+                    lvm,
+                    paddingValues
+                )
             }
             composable(Destination.Collection.route) {
                 CollectionScreen()
             }
-            composable(Destination.CharacterDetail.route){navBackStackEntry ->
+            composable(Destination.CharacterDetail.route) { navBackStackEntry ->
 
             }
         }

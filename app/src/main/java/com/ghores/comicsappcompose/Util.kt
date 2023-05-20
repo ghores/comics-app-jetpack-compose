@@ -19,7 +19,7 @@ fun getHash(timestamp: String, privateKey: String, publicKey: String): String {
         .padStart(32, '0')
 }
 
-/*
+
 @Composable
 fun AttributionText(text: String) {
     Text(text = text, modifier = Modifier.padding(start = 8.dp, top = 4.dp), fontSize = 12.sp)
@@ -38,7 +38,7 @@ fun CharacterImage(
         contentScale = contentScale
     )
 }
-
+/*
 fun List<String>.comicsToString() = this.joinToString(separator = ", ")
 
 open class SingletonHolder<out T: Any, in A>(creator: (A) -> T) {
