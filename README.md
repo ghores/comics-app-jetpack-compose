@@ -1,5 +1,7 @@
 # Comics App with Jetpack Compose
 
+this program uses [Marvel](https://developer.marvel.com/) Api
+
 
 the technologies used in this project consist of:
 
