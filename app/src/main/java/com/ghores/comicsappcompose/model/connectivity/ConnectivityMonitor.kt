@@ -18,7 +18,7 @@ class ConnectivityMonitor private constructor(context: Context) : ConnectivityOb
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     override fun observe(): Flow<ConnectivityObservable.Status> = callbackFlow {
-        val callback = object: ConnectivityManager.NetworkCallback() {
+        val callback = object : ConnectivityManager.NetworkCallback() {
             override fun onAvailable(network: Network) {
                 super.onAvailable(network)
                 launch { send(ConnectivityObservable.Status.Available) }

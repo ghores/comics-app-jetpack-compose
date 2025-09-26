@@ -59,17 +59,18 @@ fun CollectionScreen(cvm: CollectionDbViewModel, navController: NavHostControlle
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(charactersInCollection.value) { character ->
             Column {
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp)
-                    .padding(4.dp)
-                    .clickable {
-                        if (expandedElement.value == character.id) {
-                            expandedElement.value = -1
-                        } else {
-                            expandedElement.value = character.id
-                        }
-                    }) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(100.dp)
+                        .padding(4.dp)
+                        .clickable {
+                            if (expandedElement.value == character.id) {
+                                expandedElement.value = -1
+                            } else {
+                                expandedElement.value = character.id
+                            }
+                        }) {
                     CharacterImage(
                         url = character.thumbnail,
                         modifier = Modifier
@@ -139,7 +140,6 @@ fun CollectionScreen(cvm: CollectionDbViewModel, navController: NavHostControlle
             )
         }
     }
-
 }
 
 @Composable

@@ -4,7 +4,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.ghores.comicsappcompose.model.Note
 
-
 @Entity(tableName = Constants.NOTE_TABLE)
 data class DbNote(
     @PrimaryKey(autoGenerate = true)

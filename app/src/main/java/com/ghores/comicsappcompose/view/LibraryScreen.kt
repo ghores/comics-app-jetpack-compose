@@ -41,7 +41,6 @@ import com.ghores.comicsappcompose.model.api.NetworkResult
 import com.ghores.comicsappcompose.model.connectivity.ConnectivityObservable
 import com.ghores.comicsappcompose.viewmodel.LibraryApiViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LibraryScreen(
     navController: NavHostController,
@@ -107,7 +106,6 @@ fun LibraryScreen(
                 }
             }
         }
-
     }
 }
 

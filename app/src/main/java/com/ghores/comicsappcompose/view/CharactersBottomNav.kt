@@ -17,8 +17,10 @@ import com.ghores.comicsappcompose.ui.theme.GrayBackgroundLight
 fun CharactersBottomNav(
     navController: NavHostController
 ) {
-    BottomNavigation(elevation = 5.dp,
-    backgroundColor = GrayBackgroundLight) {
+    BottomNavigation(
+        elevation = 5.dp,
+        backgroundColor = GrayBackgroundLight
+    ) {
         val navBackStackEntry = navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry.value?.destination
 

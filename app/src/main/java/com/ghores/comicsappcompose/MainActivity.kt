@@ -28,9 +28,9 @@ import com.ghores.comicsappcompose.viewmodel.LibraryApiViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 sealed class Destination(val route: String) {
-    object Library : Destination("library")
-    object Collection : Destination("collection")
-    object CharacterDetail : Destination("character/{characterId}") {
+    data object Library : Destination("library")
+    data object Collection : Destination("collection")
+    data object CharacterDetail : Destination("character/{characterId}") {
         fun createRoute(characterId: Int?) = "character/$characterId"
     }
 }

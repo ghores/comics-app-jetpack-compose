@@ -19,7 +19,6 @@ fun getHash(timestamp: String, privateKey: String, publicKey: String): String {
         .padStart(32, '0')
 }
 
-
 @Composable
 fun AttributionText(text: String) {
     Text(text = text, modifier = Modifier.padding(start = 8.dp, top = 4.dp), fontSize = 12.sp)
@@ -41,9 +40,10 @@ fun CharacterImage(
 
 fun List<String>.comicsToString() = this.joinToString(separator = ", ")
 
-open class SingletonHolder<out T: Any, in A>(creator: (A) -> T) {
+open class SingletonHolder<out T : Any, in A>(creator: (A) -> T) {
     private var creator: ((A) -> T)? = creator
-    @Volatile private var instance: T? = null
+    @Volatile
+    private var instance: T? = null
 
     fun getInstance(arg: A): T {
         val checkInstance = instance

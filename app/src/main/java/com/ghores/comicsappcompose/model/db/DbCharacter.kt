@@ -15,7 +15,7 @@ data class DbCharacter(
     val thumbnail: String?,
     val comics: String?,
     val description: String?
-){
+) {
     companion object {
         fun fromCharacter(character: CharacterResult) =
             DbCharacter(

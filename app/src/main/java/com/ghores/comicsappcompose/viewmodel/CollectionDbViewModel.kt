@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CollectionDbViewModel @Inject constructor(private val repo: CollectionDbRepo): ViewModel() {
+class CollectionDbViewModel @Inject constructor(private val repo: CollectionDbRepo) : ViewModel() {
 
     val currentCharacter = MutableStateFlow<DbCharacter?>(null)
     val collection = MutableStateFlow<List<DbCharacter>>(listOf())
@@ -75,5 +75,4 @@ class CollectionDbViewModel @Inject constructor(private val repo: CollectionDbRe
             repo.deleteNoteFromRepo(note)
         }
     }
-
 }
